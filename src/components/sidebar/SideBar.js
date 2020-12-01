@@ -1,15 +1,12 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react';
 import {Text, View} from 'react-native';
-import { connect } from 'react-redux'
+import {connect} from 'react-redux';
 import {CardMusic} from '../../assets/styles/ViewStyles';
+import action from '../../redux/action/musicAction'
 
-const SideBar = ({ playlist }) => {
+const SideBar = ({ playlist, selectMusicAndPlaylist }) => {
 
     let [selected, setSelected] = useState(1)
-
-    const selectMusic = (musicId) => {
-        setSelected(selected = musicId)
-    }
 
     return (
         <View>
@@ -20,7 +17,7 @@ const SideBar = ({ playlist }) => {
                         {item.musicList.map(music => (
                             <CardMusic
                                 key={music.id}
-                                onClick={selectMusic}
+                                onPress={() => selectMusicAndPlaylist(item, music)}
                             >
                                 <Text>{music.name}</Text>
                                 <Text>{music.artist}</Text>
@@ -34,6 +31,10 @@ const SideBar = ({ playlist }) => {
     )
 }
 
-const mapStateToProps = state => ({ playlist: state.music })
+const mapDispatchToProps = dispatch => ({
+    selectMusicAndPlaylist: (item, music) => dispatch(action.selectMusicAndPlaylist(item, music))
+})
 
-export default connect(mapStateToProps)(SideBar)
+const mapStateToProps = state => ({ playlist: state.musicControl.music })
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar)

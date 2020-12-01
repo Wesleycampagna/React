@@ -5,6 +5,6 @@ export const Flex2 = styled.View`
 `
 
 
-export const CardMusic = styled.View`
+export const CardMusic = styled.TouchableOpacity`
     border: 1px solid black;
 `

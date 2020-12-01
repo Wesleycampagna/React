@@ -1,23 +1,7 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import store from './src/actions/Store'
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar,
-} from 'react-native';
-
-import {
-    Header,
-    LearnMoreLinks,
-    Colors,
-    DebugInstructions,
-    ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import {Flex2} from './src/assets/styles/ViewStyles';
+import {Provider} from 'react-redux';
+import store from './src/redux/Store/Store';
+import {Text, View} from 'react-native';
 import SideBar from './src/components/sidebar/SideBar';
 import Video from './src/components/video/Video';
 
